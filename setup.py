@@ -1,6 +1,6 @@
 from distutils.core import setup, Extension
 
-module1 = Extension('aCync', sources = ['aCync_module.c', 'aCync_data.c'])
+module1 = Extension('aCync', sources = ['src/aCyncmodule.c', 'src/aCync_data.c'])
 
 setup (name = 'aCync',
         version = '1.0',
