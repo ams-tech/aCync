@@ -6,14 +6,19 @@ static PyObject *
 aCync_read(PyObject *self, PyObject *args)
 {
     int retval;
-     retval = get_output_data();
+    retval = get_output_data();
     return PyLong_FromLong(retval);
 }
 
 static PyObject *
 aCync_write(PyObject *self, PyObject *args)
 {
-
+	int data;
+	
+	if (!PyArg_ParseTuple(args, "i", &data))
+		return NULL;
+	set_input_data(data);
+	return Py_BuildValue("");
 }
 
 
@@ -40,6 +45,6 @@ PyInit_aCync(void)
 	PyObject *module;
 
 	module = PyModule_Create(&aCyncmodule);
-
+	set_output_data(42);
 	return module;
 }
